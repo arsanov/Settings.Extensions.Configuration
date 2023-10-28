@@ -25,7 +25,7 @@ jobs:
 
       - name: Test
         run: |
-          dotnet test ./Test/Settings.Extensions.Configuration.Tests/Settings.Extensions.Configuration.Tests.csproj
+          dotnet test ./Tests/Settings.Extensions.Configuration.Tests/Settings.Extensions.Configuration.Tests.csproj
 
       - name: Upload nupkg
         uses: actions/upload-artifact@v3
