@@ -1,0 +1,28 @@
+<Project>
+  <PropertyGroup>
+    <RevisionNumber Condition="'$(RevisionNumber)' == ''">0</RevisionNumber>
+    <BuildNumber Condition="'$(BuildNumber)' == ''">0</BuildNumber>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DebugType Condition=" '$(Configuration)' == 'Release' ">None</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AppVersion Condition="Exists('$(MSBuildProjectDirectory)\..\..\mainversion')">$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)\..\..\mainversion").Trim())</AppVersion>
+    <AppVersion Condition="!Exists('$(MSBuildProjectDirectory)\..\..\mainversion')">1.0</AppVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Version>$(AppVersion).$(BuildNumber).$(RevisionNumber)</Version>
+    <AssemblyVersion>$(AppVersion).$(BuildNumber).$(RevisionNumber)</AssemblyVersion>
+    <FileVersion>$(AppVersion).$(BuildNumber).$(RevisionNumber)</FileVersion>
+    <PackageVersion>$(AppVersion).$(RevisionNumber)</PackageVersion>
+    <InformationalVersion>$(AppVersion).$(BuildNumber).$(RevisionNumber)$(VersionExtension)</InformationalVersion>
+  </PropertyGroup>
+
+</Project>

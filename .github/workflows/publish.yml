@@ -1,0 +1,34 @@
+name: 'Publish'
+on:
+  workflow_dispatch:
+
+jobs:
+  build_dotnet_project:
+    uses: arsanov/Settings.Extensions.Configuration/.github/workflows/build.yml@master
+    secrets: inherit
+
+  publish_dotnet_project:
+    needs: build_dotnet_project
+    environment: main
+    runs-on: ubuntu-latest
+    name: Publish nuget package
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: main-package
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: | 
+            6.0.x
+
+      - name: Publish nupkg
+        run: |
+          mainversion=$(cat mainversion)
+          revision=$(git rev-list --count HEAD)
+          dotnet nuget push Settings.Extensions.Configuration.$mainversion.$revision.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+
+
+
+
