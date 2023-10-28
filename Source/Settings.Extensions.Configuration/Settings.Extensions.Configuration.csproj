@@ -7,8 +7,8 @@
 
     <Authors>Viktor Arsanov</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageProjectUrl>https://github.com/arsanov/Dotenv.Extensions.Configuration</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/arsanov/Dotenv.Extensions.Configuration.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/arsanov/Settings.Extensions.Configuration</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/arsanov/Settings.Extensions.Configuration.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
 
     <PackageReadmeFile>Readme.md</PackageReadmeFile>
