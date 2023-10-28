@@ -26,7 +26,7 @@ jobs:
       - name: Publish nupkg
         run: |
           mainversion=$(cat mainversion)
-          revision=$(git rev-list --count HEAD)
+          revision=$(cat revision)
           dotnet nuget push ./Source/Settings.Extensions.Configuration/bin/Release/Settings.Extensions.Configuration.$mainversion.$revision.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
 
 

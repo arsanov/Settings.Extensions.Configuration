@@ -22,6 +22,11 @@ jobs:
       - name: Build
         run: |
           dotnet build -c Release ./Source/Settings.Extensions.Configuration/Settings.Extensions.Configuration.csproj -p:RepositoryCommit=${{ github.sha }} -p:RevisionNumber=$(git rev-list --count HEAD) -p:BuildNumber=${{ github.run_number }}
+ 
+      - name: Copy Revision
+        run: |
+          revision=$(git rev-list --count HEAD)
+          echo $revision > revision
 
       - name: Test
         run: |
@@ -34,3 +39,4 @@ jobs:
           path: | 
             Source/Settings.Extensions.Configuration/bin/Release/*.nupkg
             mainversion
+            revision
