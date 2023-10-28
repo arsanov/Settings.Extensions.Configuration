@@ -1,7 +1,7 @@
 # Settings.Extensions.Configuration
 Extension methods to register settings
 
-Usage
+## Usage
 
 Install nuget package
 ```bash
