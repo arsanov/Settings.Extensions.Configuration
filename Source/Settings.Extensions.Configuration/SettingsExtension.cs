@@ -6,7 +6,7 @@ namespace Settings.Extensions.Configuration
 {
     public static class SettingsExtension
     {
-        public static (IServiceCollection, IConfiguration) AddSettings<T>(this IServiceCollection services, IConfiguration configuration, Func<OptionsBuilder<T>, OptionsBuilder<T>> validation = null, string name = null)
+        public static SettingConfigurationContext<T> AddSettings<T>(this IServiceCollection services, IConfiguration configuration, Func<OptionsBuilder<T>, OptionsBuilder<T>> validation = null, string name = null)
             where T : class, new()
         {
             var builder = services.AddOptions<T>().Bind(configuration.GetSection(name ?? typeof(T).Name));
@@ -18,22 +18,23 @@ namespace Settings.Extensions.Configuration
 
             services.AddTransient(s => s.GetRequiredService<IOptions<T>>().Value);
 
-            return (services, configuration);
+            return new SettingConfigurationContext<T>(services, configuration);
         }
 
-        public static (IServiceCollection, IConfiguration) AddSettings<T>(this (IServiceCollection services, IConfiguration configuration) pair, Func<OptionsBuilder<T>, OptionsBuilder<T>> validation = null, string name = null)
+        public static SettingConfigurationContext<T> AddSettings<T>(this ISettingConfigurationContext context, Func<OptionsBuilder<T>, OptionsBuilder<T>> validation = null, string name = null)
             where T : class, new()
         {
-            var builder = pair.services.AddOptions<T>().Bind(pair.configuration.GetSection(name ?? typeof(T).Name));
+            (IServiceCollection services, IConfiguration configuration) = (context.Services, context.Configuration);
+            var builder = services.AddOptions<T>().Bind(configuration.GetSection(name ?? typeof(T).Name));
 
             if (validation != null)
             {
                 builder = validation(builder);
             }
 
-            pair.services.AddTransient(s => s.GetRequiredService<IOptions<T>>().Value);
+            services.AddTransient(s => s.GetRequiredService<IOptions<T>>().Value);
 
-            return pair;
+            return new SettingConfigurationContext<T>(context.Services, context.Configuration);
         }
     }
 }

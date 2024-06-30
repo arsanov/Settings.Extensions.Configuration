@@ -16,18 +16,11 @@ namespace Settings.Extensions.Configuration.Observable
             return (new OptionsObservable<T>(monitor)).DistinctUntilChanged();
         }
 
-        public static (IServiceCollection, IConfiguration) AddObservableSettings<T>(this IServiceCollection services, IConfiguration configuration)
+        public static (IServiceCollection, IConfiguration) AddObservableSettings<T>(this SettingConfigurationContext<T> context)
             where T : class, IEquatable<T>
         {
             services.AddSingleton<IObservable<T>>(FromMonitor<T>);
             return (services, configuration);
-        }
-
-        public static (IServiceCollection, IConfiguration) AddObservableSettings<T>(this (IServiceCollection services, IConfiguration configuration) pair)
-            where T : class, IEquatable<T>
-        {
-            pair.services.AddSingleton<IObservable<T>>(FromMonitor<T>);
-            return pair;
         }
     }
 }
