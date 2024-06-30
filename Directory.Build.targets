@@ -1,5 +1,2 @@
 <Project>
-  <Target Name="CopyVersionToBuild"  Condition="'$(IsPublishable)' == 'True'"  AfterTargets="Publish">
-    <Copy SourceFiles="$(MSBuildThisFileDirectory)\mainversion" DestinationFolder="$(PublishDir)" />
-  </Target>
 </Project>
