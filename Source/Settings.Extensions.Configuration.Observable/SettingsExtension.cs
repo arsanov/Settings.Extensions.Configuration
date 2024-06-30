@@ -1,6 +1,9 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using System.Reactive;
+using System.Reactive.Linq;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+
 
 namespace Settings.Extensions.Configuration.Observable
 {
@@ -10,7 +13,7 @@ namespace Settings.Extensions.Configuration.Observable
             where T : class, IEquatable<T>
         {
             var monitor = provider.GetRequiredService<IOptionsMonitor<T>>();
-            return new OptionsObservable<T>(monitor);
+            return (new OptionsObservable<T>(monitor)).DistinctUntilChanged();
         }
 
         public static (IServiceCollection, IConfiguration) AddObservableSettings<T>(this IServiceCollection services, IConfiguration configuration)
