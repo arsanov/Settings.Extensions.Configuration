@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../Settings.Extensions.Configuration.Observable/Settings.Extensions.Configuration.Observable.csproj" />
+    <ProjectReference Include="../Settings.Extensions.Configuration/Settings.Extensions.Configuration.csproj" />
   </ItemGroup>
 
   <ItemGroup>
