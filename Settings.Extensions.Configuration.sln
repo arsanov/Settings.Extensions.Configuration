@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Settings.Extensions.Configu
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{DBB56526-89D8-43C1-ACD9-56424CE7BA32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Settings.Extensions.Configuration.Observable", "Source\Settings.Extensions .Configuration.Observable\Settings.Extensions.Configuration.Observable.csproj", "{772C6FBC-D18D-4DB3-8189-B6AF02985186}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Settings.Extensions.Configuration.Observable", "Source\Settings.Extensions.Configuration.Observable\Settings.Extensions.Configuration.Observable.csproj", "{772C6FBC-D18D-4DB3-8189-B6AF02985186}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
