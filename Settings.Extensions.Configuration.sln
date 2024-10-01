@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Settings.Extensions.Configu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Settings.Extensions.Configuration.Tests", "Tests\Settings.Extensions.Configuration.Tests\Settings.Extensions.Configuration.Tests.csproj", "{ABBCA516-946F-465D-82A9-99385B05B835}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{DBB56526-89D8-43C1-ACD9-56424CE7BA32}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Settings.Extensions.Configuration.Observable", "Source\Settings.Extensions.Configuration.Observable\Settings.Extensions.Configuration.Observable.csproj", "{772C6FBC-D18D-4DB3-8189-B6AF02985186}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +25,17 @@ Global
 		{ABBCA516-946F-465D-82A9-99385B05B835}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABBCA516-946F-465D-82A9-99385B05B835}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABBCA516-946F-465D-82A9-99385B05B835}.Release|Any CPU.Build.0 = Release|Any CPU
+		{772C6FBC-D18D-4DB3-8189-B6AF02985186}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{772C6FBC-D18D-4DB3-8189-B6AF02985186}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{772C6FBC-D18D-4DB3-8189-B6AF02985186}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{772C6FBC-D18D-4DB3-8189-B6AF02985186}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{854666D5-88EB-42FF-B446-F35FA1004C07} = {DBB56526-89D8-43C1-ACD9-56424CE7BA32}
+		{772C6FBC-D18D-4DB3-8189-B6AF02985186} = {DBB56526-89D8-43C1-ACD9-56424CE7BA32}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EE2CE262-7049-4505-8578-7086CC9B10DE}

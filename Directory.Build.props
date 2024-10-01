@@ -8,9 +8,17 @@
     <DebugType Condition=" '$(Configuration)' == 'Release' ">None</DebugType>
   </PropertyGroup>
 
-  <PropertyGroup>
+  <PropertyGroup Condition="'$(AppVersion)' == ''">
+    <AppVersion Condition="Exists('$(MSBuildProjectDirectory)\mainversion')">$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)\mainversion").Trim())</AppVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(AppVersion)' == ''">
+    <AppVersion Condition="Exists('$(MSBuildProjectDirectory)\..\mainversion')">$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)\..\mainversion").Trim())</AppVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(AppVersion)' == ''">
     <AppVersion Condition="Exists('$(MSBuildProjectDirectory)\..\..\mainversion')">$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)\..\..\mainversion").Trim())</AppVersion>
-    <AppVersion Condition="!Exists('$(MSBuildProjectDirectory)\..\..\mainversion')">1.0</AppVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(AppVersion)' == ''">
+    <AppVersion>1.0</AppVersion>
   </PropertyGroup>
 
   <PropertyGroup>
