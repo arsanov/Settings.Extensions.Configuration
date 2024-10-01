@@ -1,6 +1,4 @@
-﻿using System.Reactive;
-using System.Reactive.Linq;
-using Microsoft.Extensions.Configuration;
+﻿using System.Reactive.Linq;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
