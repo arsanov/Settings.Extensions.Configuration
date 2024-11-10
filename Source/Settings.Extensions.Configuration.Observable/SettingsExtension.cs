@@ -9,7 +9,7 @@ namespace Settings.Extensions.Configuration.Observable
         public static SettingConfigurationContext<T> AddObservableSettings<T>(this SettingConfigurationContext<T> context, Func<IObservable<T>, IObservable<T>> transform = null)
             where T : class, IEquatable<T>
         {
-            var transformObservable = transform ?? (o => o.Throttle(TimeSpan.FromSeconds(10)).DistinctUntilChanged());
+            var transformObservable = transform ?? (o => o.Take(1).Concat(o.Skip(1).Throttle(TimeSpan.FromSeconds(10)).DistinctUntilChanged()));
             context.Services.AddSingleton<OptionsObservable<T>>(p => new OptionsObservable<T>(p.GetRequiredService<IOptionsMonitor<T>>()));
             context.Services.AddSingleton<IObservable<T>>(p => transformObservable(p.GetRequiredService<OptionsObservable<T>>()));
             return context;
